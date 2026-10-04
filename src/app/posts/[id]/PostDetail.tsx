@@ -1,6 +1,7 @@
 import DeletePostButton from './DeletePostButton';
 import { getPost } from '@/actions/post';
 import { verifySession } from '@/utils/session';
+import { notFound } from 'next/navigation';
 
 export default async function PostDetail({
   params,
@@ -32,7 +33,7 @@ export default async function PostDetail({
             paddingBottom: '10px',
           }}
         >
-          投稿者: {post.user.username} | 作成日: {new Date(post.createdAt).toLocaleDateString()}
+          投稿者: {post.user.userName} | 作成日: {new Date(post.createdAt).toLocaleDateString()}
         </p>
         <div style={{ lineHeight: '1.8', whiteSpace: 'pre-wrap' }}>
           {post.content}
