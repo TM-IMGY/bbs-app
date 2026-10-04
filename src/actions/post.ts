@@ -1,7 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { revalidateTag, cacheTag } from 'next/cache';
+import { revalidateTag, cacheTag, updateTag } from 'next/cache';
 import { AppDataSource, getRepository } from '@/utils/data-source';
 import { Post } from '@/entities/Post';
 import { verifySession } from '@/utils/session';
@@ -111,6 +111,6 @@ export async function deletePost(id: number) {
   await postRepository.remove(post);
 
   updateTag('posts');
-  updateTag(`post-${id}`);
+  updateTag('posts');
   redirect('/');
 }
